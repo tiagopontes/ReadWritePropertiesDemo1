@@ -27,8 +27,8 @@ namespace FormFrontEnd
                 myFirstBallonn = new Balloon()
                 {
                     Colour = txtColor.Text.Trim(),
-                    Diameter = Convert.ToDecimal(txtDiameter.Text.Trim()),
-                    Height = Convert.ToDecimal(txtHeight.Text.Trim())
+                    Diameter = Convert.ToDecimal(txtDiameter.Text),                                 
+                    Height = Convert.ToDecimal(txtHeight.Text)
                 };
 
                 //myFirstBallonn.Colour = txtColor.Text.Trim();
@@ -36,14 +36,18 @@ namespace FormFrontEnd
                 //myFirstBallonn.Height = Convert.ToDecimal(txtHeight.Text.Trim());
 
             }
+            catch(ConstraintException ex)
+            {
+                MessageBox.Show(ex.Message, ex.GetType().ToString(), MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
             catch (DataException ex)
             {
-                MessageBox.Show(ex.Message, ex.GetType().ToString(), MessageBoxButtons.OK, MessageBoxIcon.Stop); ;
+                MessageBox.Show(ex.Message, ex.GetType().ToString(), MessageBoxButtons.OK, MessageBoxIcon.Stop); 
             }
             catch (Exception ex)
             {
 
-                MessageBox.Show(ex.Message, ex.GetType().ToString(), MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                MessageBox.Show(ex.Message, ex.GetType().ToString(), MessageBoxButtons.OK);
             }
         }
 
